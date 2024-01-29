@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp5.Entities
 {
-    internal class Client
+    internal class Product
     {
         public string name { get; set; }
-        public string email { get; set; }
-        public DateTime birthDate { get; set; }
+        public double price { get; set; }
     }
 }
