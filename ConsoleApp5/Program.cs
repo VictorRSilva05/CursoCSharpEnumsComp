@@ -1,4 +1,5 @@
 ﻿using ConsoleApp5.Entities;
+using ConsoleApp5.Entities.Enums;
 
 namespace ConsoleApp5
 {
@@ -17,13 +18,16 @@ namespace ConsoleApp5
             Client client = new Client(nome, email, birthDate);
 
             Console.WriteLine("Enter Order data:");
-            Console.Write("Status: ");             //Do this <<<<<
+            Console.Write("Status: "); 
+            OrderStatus status = Enum.Parse<OrderStatus>(Console.ReadLine());
 
             DateTime orderTime = DateTime.Now;
 
+            Order order = new Order(orderTime, status);
+
             Console.Write("How many items to this order? ");
             byte n = byte.Parse(Console.ReadLine());
-
+       
             for (int i = 0; i < n; i++)
             {
                 Console.WriteLine($"Enter {i+1} item data:");
@@ -34,6 +38,9 @@ namespace ConsoleApp5
                 Console.Write("Quantity: ");
                 int quantity = int.Parse(Console.ReadLine());
             }
+
+            Console.WriteLine(order);
+            Console.WriteLine(client);
         }
     }
 }

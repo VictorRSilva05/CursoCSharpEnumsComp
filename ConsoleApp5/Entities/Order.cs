@@ -17,5 +17,14 @@ namespace ConsoleApp5.Entities
             this.moment = moment;
             this.status = status;
         }
+
+        public override string ToString()
+        {
+            return "Order moment: "
+                + moment
+                + "\n"
+                + "Order status: "
+                + status;
+        }
     }
 }
