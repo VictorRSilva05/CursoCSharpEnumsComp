@@ -11,5 +11,11 @@ namespace ConsoleApp5.Entities
     {
         public DateTime moment {  get; set; }
         public OrderStatus status { get; set; }
+
+        public Order(DateTime moment, OrderStatus status)
+        {
+            this.moment = moment;
+            this.status = status;
+        }
     }
 }
