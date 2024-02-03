@@ -11,9 +11,15 @@ namespace ConsoleApp5.Entities
         public int quantity { get; set; }
         public double price { get; set; }
 
-        public static double Subtotal(int qtd, double price)
+        public OrderItem(int quantity, double price)
         {
-            return qtd * price;
+            this.quantity = quantity;
+            this.price = price;
+        }
+
+        public static double SubTotal( double price, int quantity)
+        {
+            return price * quantity;
         }
     }
 }
