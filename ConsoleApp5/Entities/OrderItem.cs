@@ -8,18 +8,34 @@ namespace ConsoleApp5.Entities
 {
     internal class OrderItem
     {
-        public int quantity { get; set; }
-        public double price { get; set; }
-
-        public OrderItem(int quantity, double price)
+        public int Quantity { get; set; }
+        public double Price { get; set; }
+        public Product Product { get; set; }
+        public OrderItem()
         {
-            this.quantity = quantity;
-            this.price = price;
         }
 
-        public static double SubTotal( double price, int quantity)
+        public OrderItem(int quantity, double price, Product product)
         {
-            return price * quantity;
+            Quantity = quantity;
+            Price = price;
+            Product = product;
+        }
+
+        public double SubTotal()
+        {
+            return Price * Quantity;
+        }
+
+        public override string ToString()
+        {
+            return Product.name
+                + ", $"
+                + Price.ToString("F2")
+                + ", Quantity: "
+                + Quantity
+                + ", Subtotal: $"
+                + SubTotal().ToString("F2");
         }
     }
 }

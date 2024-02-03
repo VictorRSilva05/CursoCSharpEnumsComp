@@ -18,36 +18,35 @@ namespace ConsoleApp5
             Client client = new Client(nome, email, birthDate);
 
             Console.WriteLine("\nEnter Order data:");
-            Console.Write("Status: "); 
+            Console.Write("Status: ");
             OrderStatus status = Enum.Parse<OrderStatus>(Console.ReadLine());
 
             DateTime orderTime = DateTime.Now;
 
-            Order order = new Order(orderTime, status);
+            Order order = new Order(orderTime, status, client);
 
             Console.Write("\nHow many items to this order? ");
             byte n = byte.Parse(Console.ReadLine());
 
-            List<OrderItem> orders = new List<OrderItem>();
-            List<Product> products = new List<Product>();
-       
             for (int i = 0; i < n; i++)
             {
-                Console.WriteLine($"\nEnter {i+1} item data:");
+                Console.WriteLine($"\nEnter {i + 1} item data:");
                 Console.Write("Product name: ");
                 string productName = Console.ReadLine();
                 Console.Write("Product price: ");
                 double productPrice = double.Parse(Console.ReadLine());
                 Console.Write("Quantity: ");
                 int quantity = int.Parse(Console.ReadLine());
-                orders.Add(new OrderItem(quantity,productPrice));
-                products.Add(new Product(productName, OrderItem.SubTotal(productPrice, quantity)));
+
+                Product product = new Product(productName, productPrice);
+
+                OrderItem orderItem = new OrderItem(quantity, productPrice, product);
+
+                order.AddItem(orderItem);
             }
+
             Console.WriteLine("\nORDER SUMMARY:\n");
-            Console.WriteLine(order);
-            Console.WriteLine(client);
-
-
+            Console.WriteLine(order);     
         }
     }
 }
